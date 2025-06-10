@@ -160,6 +160,7 @@ XPlayback::volume_changed (const Xmms::Dict &volDict)
 		volumes.insert (key, levels.value (key).toInt());
 	}
 	emit volumeChanged (volumes);
+	return true;
 }
 
 
