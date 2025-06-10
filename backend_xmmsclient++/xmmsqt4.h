@@ -1,4 +1,4 @@
-/** 
+/**
  *  This file is a part of Esperanza, an XMMS2 Client.
  *
  *  Copyright (C) 2005-2016 XMMS2 Team
@@ -39,12 +39,19 @@ class XmmsQT4 : public QObject, public Xmms::MainloopInterface
 	public slots:
 		void OnRead ();
 		void OnWrite ();
+		void initializeSocketNotifiers();
+		void applyPendingWriteState();
 
 	private:
 		int m_fd;
 		QSocketNotifier *m_rsock;
 		QSocketNotifier *m_wsock;
 		xmmsc_connection_t *m_xmmsc;
+		bool m_initialized;
+
+		// Pre-initialization:
+		bool m_hasPendingWriteState;
+		bool m_pendingWriteState;
 };
 
 #endif
